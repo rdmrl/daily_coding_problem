@@ -1,0 +1,12 @@
+{
+  "name": "median_sequence",
+  "version": "1.0.0",
+  "description": "Calculates the running median of a sequenc ef numbers",
+  "main": "median_of_sequence.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "rdmrl <ravi.damarla@gmail.com>",
+  "license": "ISC"
+}
