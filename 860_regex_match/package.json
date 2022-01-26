@@ -1,0 +1,12 @@
+{
+  "name": "860_regex_match",
+  "version": "1.0.0",
+  "description": "A simple regexp implementation.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha index.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
