@@ -145,8 +145,45 @@ module.exports = {
           }
         }
       }
-    }
+    } else if ( parser.onlyHasAsterisk() ) {
+			// Unsupported - only asterisk.
+		} else {
+			// Case B.
+
+			// B.1 .*at
+			// B.2 at.*
+			// B.3 c.*at
+
+			if ( parser.hasPrefix() ) {
+				if ( ! parser.hasSuffix() ) {
+					// Case B.2
+					console.log( 'Case B.2' );
+					if ( inputString.indexOf( prefixStr ) === 0 ) {
+						return true;
+					}
+				} else {
+					// Case B.3
+					console.log( 'Case B.3' );
+					if ( inputString.indexOf( prefixStr ) === 0 ) {
+						const matchIx = inputString.length - suffixStr.length;
+						if ( inputString.indexOf( suffixStr ) === matchIx ) {
+							return true;
+						}
+					}
+				}
+			} else {
+				if ( parser.hasSuffix() ) {
+					// Case B.1
+					console.log( 'Case B.1' );
+					const matchIx = inputString.length - suffixStr.length;
+					if ( inputString.indexOf( suffixStr ) === matchIx ) {
+						return true;
+					}
+				}
+			}
+		}
 
     return false;
-  }
+	}
 };
+
