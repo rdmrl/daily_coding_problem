@@ -1,0 +1,12 @@
+{
+  "name": "864_smallest_number_of_boats",
+  "version": "1.0.0",
+  "description": "A function to calculate the smallest number of boats to transport a group of people.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha index.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
