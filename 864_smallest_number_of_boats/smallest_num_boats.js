@@ -29,24 +29,15 @@ module.exports = {
     let bucketIndices = [];
     let bucketWeight = 0;
 
-    console.log( inputWeights );
-
     for ( let index = 0; index < inputWeights.length; index++ ) {
-      console.log( "========================" );
-      console.log( processedList );
-      console.log( 'boatCount:', boatCount, 'index:', index );
-
       // The simplest case...
       // ...the weight of this person matches the limit exactly.
       if ( inputWeights[ index ] == weightLimit && processedList[ index ] === 0 ) {
-
         // Dedicate a boat to this person. 
         boatCount++;
 
         // Set this weight as processed.
         processedList[ index ] = 1;
-
-        console.log( 'exact match:', inputWeights[ index ] );
       } else {
 
         // Add this weight to the temporary bucket, only if it is empty.
@@ -54,10 +45,7 @@ module.exports = {
         if ( bucketWeight === 0 && processedList[ index ] === 0 ) {
           bucketWeight += inputWeights[ index ];
           bucketIndices.push( index );
-          console.log( 'Adding initial item to bucket at index:', index, 'weight:', inputWeights[ index ] );
         }
-
-        console.log( 'bucket.total.wt:', bucketWeight );
 
         let bestFits = []
 
@@ -81,8 +69,6 @@ module.exports = {
           }
         }
 
-        console.log( bestFits );
-
         if ( bestFits.length > 0 ) {
           if ( bestFits.length > 1 ) {
             // Sort the bestFits by the smallest left over weight.
@@ -98,11 +84,8 @@ module.exports = {
 
         if ( bucketWeight > 0 ) {
           boatCount++;
-          console.log( 'new boat bucket.wt:', bucketWeight, 'boats:', boatCount );
-          console.log( 'bucketIndices', bucketIndices );
 
           bucketWeight = 0;
-
           while ( bucketIndices.length ) {
             let bucketIndex = bucketIndices.shift();
             processedList[ bucketIndex ] = 1;
