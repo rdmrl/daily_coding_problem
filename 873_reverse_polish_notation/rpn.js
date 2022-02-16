@@ -13,7 +13,61 @@
  * =====
  */
 
+let performOperation = function( o1, o2, oper ) {
+  let result = 0;
+  switch ( oper ) {
+    case '+':
+      result = o2 + o1;
+      break;
+
+    case '-':
+      result = o2 - o1;
+      break;
+
+    case '*':
+      result = o2 * o1;
+      break;
+
+    case '/':
+      result = o2 / o1;
+      break;
+  }
+
+  return result;
+};
+
 module.exports = {
-  evaluate: function( s ) {
+  evaluate: function( inputArr ) {
+
+    // The list of the supported operators.
+    const operatorsArr = [ '+', '-', '/', '*' ];
+
+    // Store the operands as the input array is processed.
+    let operands = [];
+
+    for ( let ix = 0; ix < inputArr.length; ix++ ) {
+      let elem = inputArr[ ix ];
+
+      // Check if this element is an operator...
+      if ( operatorsArr.includes( elem ) ) {
+        // Get the last two operands from the stack.
+        let lastOperand = operands.pop();
+        let secondLastOperand = operands.pop();
+
+        // Perform the operation to obtain the result and...
+        let result = performOperation( lastOperand, secondLastOperand, elem );
+
+        // ...add it to the operands stack for use with the next operation.
+        operands.push( result );
+      } else {
+        // ...or an operand.
+        // If an operand, add it to the operands list.
+        operands.push( elem );
+      }
+    } // for
+
+    // At the end, there should be only one operand remaining in the stack.
+    // Return it as the result of the entire expression.
+    return operands.pop();
   }
 };
