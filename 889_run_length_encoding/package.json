@@ -1,0 +1,11 @@
+{
+  "name": "889_run_length_encoding",
+  "version": "1.0.0",
+  "description": "Run-length encoder and decoder",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha index.test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
