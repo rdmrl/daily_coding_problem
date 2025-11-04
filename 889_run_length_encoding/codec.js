@@ -11,52 +11,52 @@
  * =====
  */
 module.exports = {
-  encode: function(inputString) {
-  
-    console.log('inp:', inputString, 'len:', inputString.length);
+  encode: function( inputString ) {
+
+    console.log( 'inp:', inputString, 'len:', inputString.length );
     let encodedChars = [];
 
     let curChar = '';
     let curCharCount = 0;
 
-    console.log('------------------------------------');
-    for(let ix = 0; ix < inputString.length; ix++) {
-      console.log('ix:', ix, 'at.ix:', inputString[ix], 'at.ix.1:', inputString[ix + 1]);
-      if((ix+1) < inputString.length && inputString[ix] === inputString[ix + 1]) {
+    console.log( '------------------------------------' );
+    for ( let ix = 0; ix < inputString.length; ix++ ) {
+      console.log( 'ix:', ix, 'at.ix:', inputString[ ix ], 'at.ix.1:', inputString[ ix + 1 ] );
+      if ( ( ix + 1 ) < inputString.length && inputString[ ix ] === inputString[ ix + 1 ] ) {
         // The following character is the same as the current character.
-        curChar = inputString[ix];
+        curChar = inputString[ ix ];
         curCharCount++;
       } else {
-          console.log('diff.outer: curChar:', curChar, 'curCharCount:', curCharCount);
+        console.log( 'diff.outer: curChar:', curChar, 'curCharCount:', curCharCount );
         // The next character is different.
-        if(curCharCount >= 1) {
+        if ( ( curCharCount + 1 ) > 1 ) {
           // Include the current char too.
-          if(ix < inputString.length - 1) {
+          if ( ix < inputString.length - 1 ) {
             curCharCount++;
           }
-          console.log('diff > 1: curChar:', curChar, 'curCharCount:', curCharCount);
+          console.log( 'diff > 1: curChar:', curChar, 'curCharCount:', curCharCount );
 
           // There have been repeats, save them.
-          encodedChars.push(curCharCount);
-          encodedChars.push(curChar);
+          encodedChars.push( curCharCount );
+          encodedChars.push( curChar );
 
           // Reset the counter.
           curCharCount = 0;
           curChar = '';
         } else {
           // No repeats, retain this character.
-          encodedChars.push(1);
-          encodedChars.push(inputString[ix]);
-          curChar = inputString[ix];
+          encodedChars.push( 1 );
+          encodedChars.push( inputString[ ix ] );
+          curChar = inputString[ ix ];
           curCharCount = 1;
         }
       }
-    console.log('------------------------------------');
+      console.log( '------------------------------------' );
     }
 
-    return encodedChars.join('');
+    return encodedChars.join( '' );
   },
-  decode: function(encodedString) {
+  decode: function( encodedString ) {
     let decodedString = null;
 
     return decodedString;

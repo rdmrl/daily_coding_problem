@@ -18,6 +18,34 @@
  */
 
 module.exports = {
-  triangleWeight: function( triangle ) {
+  getMaximumWeightPath: function( triangle ) {
+
+    let paths = [];
+
+    const rootValue = triangle[0][0];
+    console.log( 'root:', rootValue );
+
+    // Loop through the rows.
+    for ( let index1 = 1; index1 < triangle.length; index1++ ) {
+      const row = triangle[index1];
+
+      let pathPrefix = [];
+      if ( index1 === 1 ) {
+        pathPrefix = [ rootValue ];
+      }
+
+      console.log('--------');
+      // Process each element in a row.
+      for ( let index2 = 0; index2 < row.length; index2++ ) {
+        console.log( row[index2] );
+
+        // Create new paths.
+        // paths.push
+
+        const curPath = rootElement + ' -> ' + row[index2];
+        
+
+      }
+    }
   }
 };
